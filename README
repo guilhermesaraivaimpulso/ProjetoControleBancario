@@ -1,1 +1,27 @@
-Controle Bancario
+------- Controle Bancário
+
+Descrição:
+Um sistema de controle bancário onde temos a criação de um novo usuário
+Criação de um novos cartões para o usuário
+Controle de crédito dos cartões
+Controle de débito do usuário
+Mensagem de aviso para o usuário
+
+Regras:
+- Não é possivel criar usuario sem CPF
+- Não é possivel criar cartões sem a verificaça de renda
+- Todo usuario tem obrigatoriamente um cartao de debito
+- Pode ter apenas um cartao de debito
+- Simulação de um funcionamento tipico de um banco normal em relação ao credito e débito
+	- Não pode gastar no credito um valor acima do limite
+	- Não pode gastar um valor abaixo do limite de cheque especial do usuario
+	- Pagina de informações e balanço do usuário
+	- Pagina de total a pagar de cartões de crédito com calculo de juros por mês (0,01 %)
+
+
+Tabelas:
+Usuario
+Cartoes
+ContaDebito
+ContaCredito
+Mensagens
