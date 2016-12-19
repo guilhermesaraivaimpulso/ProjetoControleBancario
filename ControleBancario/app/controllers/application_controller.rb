@@ -11,6 +11,5 @@ class ApplicationController < ActionController::Base
   end
   def atualiza_valor_total
     session[:saldoAtual] = Usuario.find(session[:usuario_id]).saldo_total
-    puts "-------------- SALDO ATUAL -----------> #{session[:saldoAtual]}"
   end
 end

@@ -7,6 +7,8 @@ class Usuario < ApplicationRecord
     Usuario.where(login: login, senha: senha).try(:take)
   end
   validates :nome, presence: { message: "Nome não pode ser vazio !" }
+  validates :cpf, presence: { message: "CPF não pode ser vazio !" }
+  validates :cpf, length: { is: 6, message: "CPF deve ter 11 números !" }
   validates :login, presence: { message: "Login não pode ser vazio !" }
   validates :senha, presence: { message: "Senha não pode ser vazia !" }
   validates :limite_ce, presence: { message: "Limite não pode ser vazio !" }, numericality: { greater_than: 99, message: "Limite deve ser ao menos 100 !" }

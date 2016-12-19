@@ -5,56 +5,14 @@ Um sistema de controle bancário onde temos a criação de um novo usuário
 Criação de um novos cartões para o usuário
 Controle de crédito dos cartões
 Controle de débito do usuário
-Mensagem de aviso para o usuário
+Mensagem de aviso para o usuário (Não pensei em uma aplicação ainda...)
 
 Regras:
 - Não é possivel criar usuario sem CPF
-- Não é possivel criar cartões sem a verificaça de renda
-- Todo usuario tem obrigatoriamente um cartao de debito
-- Pode ter apenas um cartao de debito
+- Usuario criado automaticamente com uma conta debito
+- Pode ter apenas um cartão de debito
 - Simulação de um funcionamento tipico de um banco normal em relação ao credito e débito
 	- Não pode gastar no credito um valor acima do limite
 	- Não pode gastar um valor abaixo do limite de cheque especial do usuario
 	- Pagina de informações e balanço do usuário
-	- Pagina de total a pagar de cartões de crédito com calculo de juros por mês (0,01 %)
-
-
-Tabelas:
-Usuarios
-	Nome
-	CPF
-	Endereco
-	Login
-	Senha
-	Limite_ce
-
-rails g model Usuario nome:string cpf:string endereco:string login:string senha:string limite_ce:integer
-
-Cartao
-	Usuario (Ref)
-	Nome
-	Tipo_cartao
-
-rails g model Cartao usuario:references nome:string tipo_cartao:string
-
-Debito
-	Usuario (Ref)
-	Valor_debitado
-	Tipo_de_debito
-	Local
-
-rails g model Debito usuario:references valor_debitado:integer tipo_de_debito:string local:string
-
-Credito
-	Cartao (ref)
-	Valor_creditado
-	Local
-
-rails g model Credito cartao:references valor_creditado:integer local:string
-
-Mensagem
-	Usuario (Ref)
-	Msg
-
-rails g model mensagem usuario:references msg:string
-
+	- Pagina de dados dos cartões do usuário
