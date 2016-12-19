@@ -1,0 +1,14 @@
+<h1>Pagina de Login</h1>
+<%= render 'shared/notice' %>
+<%= bootstrap_form_for(@usuario, url: login_path) do |f| %>
+  <div class="field">
+    <%= f.text_field :login, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.password_field :senha %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Entrar" %>
+  </div>
+  <%= link_to "Cadastrar", new_usuario_path %>
+<% end %>

@@ -1,0 +1,6 @@
+    <% if session[:usuario_id] %>
+      <div style="position: absolute; right: 0px; padding: 10px">
+        Olá <b> <%= link_to session[:usuario_nome], edit_usuario_path(session[:usuario_id]) %></b> |
+        <%= link_to "Logoff", logoff_path, method: :post %>
+      </div>
+    <% end %>

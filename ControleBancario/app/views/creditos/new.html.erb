@@ -1,0 +1,8 @@
+<%= render 'shared/erros', object: @credito %>
+<div class="page-header"><h2>Novo Registro</h2></div>
+  <%= bootstrap_form_for(@credito) do |f| %>
+  <%= f.text_field :local %>
+  <%= f.number_field :valor_creditado, step: :any %>
+  <%= f.hidden_field :cartao_id, value: params[:cartao_id] %>
+  <%= f.submit %>
+<% end %>

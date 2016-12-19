@@ -1,0 +1,119 @@
+<%= render 'shared/loginbar' %>
+<div style="padding: 7px">
+  <div class="page-header">
+    <h1>Dados Pessoais</h1>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <img src="/image/user.png" class="img-thumbnail">
+    </div>
+    <div class="col-sm-6">
+      <b>Nome: </b><%= @usuario.nome %><br>
+      <b>CPF: </b><%= @usuario.cpf %><br>
+      <b>Endereço: </b><%= @usuario.endereco %><br>
+      <b>Limite do cheque especial: </b><%= @usuario.limite_ce %><br>
+      <b>Saldo atual: </b><%= @usuario.saldo_total %><br>
+    </div>
+  </div>
+  <div class="page-header"><h2>Conta Bancária</h2>
+
+  <%= link_to new_debito_path do %>
+    <button type="button" class="btn btn-primary">Novo Registro</button>
+  <% end %>
+  </div>
+    <% if @usuario.debitos.count !=0 %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Local</th>
+            <th>Quantidade</th>
+            <th>Saldo Anterior</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @usuario.debitos.each do |debito| %>
+          <tr>
+            <td><%= debito.local %></td>
+            <td><%= debito.valor_debitado %></td>
+            <td><%= debito.saldo_total %></td>
+          </tr>
+        <% end %>
+          <tr style="background-color: #EEEEEE">
+            <td colspan="2">Total</td>
+            <td><%= @usuario.saldo_total %></td>
+          </tr> 
+        </tbody>
+      </table>
+    <% else %>
+      <div style="color: #AAAAAA">Conta ainda não utilizada.</div>
+    <% end %>
+  <div class="page-header"><h2>Cartões</h2>
+    <%= link_to new_cartao_path do %>
+      <button type="button" class="btn btn-primary">Novo Cartão</button>
+    <% end %>
+  </div>
+    <% if @usuario.cartoes.count !=0 %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Tipo</th>
+            <th>Limite</th>
+            <th>Limite Atual</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @usuario.cartoes.each do |cartao| %>
+          <tr>
+            <td><%= link_to cartao.nome, cartao %></td>
+            <td><%= cartao.tipo_cartao %></td>
+            <td><%= cartao.limite %></td>
+            <td><%= cartao.limite_atual %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <div style="color: #AAAAAA">Não há cartões nesta conta.</div>
+    <% end %>
+  <div class="page-header"><h2>Mensagens</h2></div>
+
+  <% if @mensagens.count != 0 %>
+
+    <% @mensagens.each do |mensagem| %>
+      <% if mensagem.tipo == "S" %>
+        <div class="alert alert-success" role="alert">
+          <div>
+            <%= mensagem.msg %>
+            <span class="label label-default" style="position: absolute; right:20px; ">X</span>
+          </div>
+        </div>
+      <% elsif mensagem.tipo == "I" %>
+        <div class="alert alert-info" role="alert">
+          <div>
+            <%= mensagem.msg %>
+            <span class="label label-default" style="position: absolute; right:20px; ">X</span>
+          </div>
+        </div>
+      <% elsif mensagem.tipo == "W" %>
+        <div class="alert alert-warning" role="alert">
+          <div>
+            <%= mensagem.msg %>
+            <span class="label label-default" style="position: absolute; right:20px; ">X</span>
+          </div>
+        </div>
+      <% elsif mensagem.tipo == "D" %>
+        <div class="alert alert-danger" role="alert">
+          <div>
+            <%= mensagem.msg %>
+            <span class="label label-default" style="position: absolute; right:20px; ">X</span>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% else %>
+    <div style="color: #AAAAAA">Não há mensagens novas.</div>
+  <% end %>
+  <br>
+  <br>
+</div>

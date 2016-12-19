@@ -1,0 +1,17 @@
+<h1>Cadastro de Usuario</h1>
+<%= render 'shared/notice' %>
+<%= bootstrap_form_for(@usuario) do |f| %>
+    <%= f.text_field :nome %>
+    <%= f.text_field :cpf %>
+    <%= f.text_field :endereco %>
+    <%= f.text_field :login %>
+    <%= f.password_field :senha %>
+    <%= f.password_field :senha_confirm %>
+    <%= f.number_field :limite_ce, label: "Limite de cheque especial", step: :any %>
+    <%= f.hidden_field :saldo_total, label: "Limite de cheque especial", value: 0 %>
+    <%= f.submit "Cadastrar" %>
+<% end %>
+<br>
+<%= link_to home_index_path do %>
+  <input type="button" class="btn btn-default" value="Voltar">
+<% end %>

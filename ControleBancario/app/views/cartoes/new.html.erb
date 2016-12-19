@@ -1,0 +1,16 @@
+<h1>Cadastro de Cartão</h1>
+<%= render 'shared/notice' %>
+<%= bootstrap_form_for(@cartao) do |f| %>
+    <%= f.text_field :nome %>
+    <%= f.number_field :limite, step: :any %>
+    <%= f.form_group :tipo_cartao, label: { text: "Tipo: " } do %>
+      <%= f.radio_button :tipo_cartao, "cartaogold", label: "Cartão Gold", inline: true %>
+      <%= f.radio_button :tipo_cartao, "cartaoprata", label: "Cartão Prata", inline: true %>
+      <%= f.radio_button :tipo_cartao, "cartaoblack", label: "Cartão Black", inline: true %>
+    <% end %>
+    <%= f.submit "Cadastrar" %>
+<% end %>
+<br>
+<%= link_to @usuario do %>
+  <input type="button" class="btn btn-default" value="Voltar">
+<% end %>

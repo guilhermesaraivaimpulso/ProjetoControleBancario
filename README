@@ -20,8 +20,41 @@ Regras:
 
 
 Tabelas:
-Usuario
-Cartoes
-ContaDebito
-ContaCredito
-Mensagens
+Usuarios
+	Nome
+	CPF
+	Endereco
+	Login
+	Senha
+	Limite_ce
+
+rails g model Usuario nome:string cpf:string endereco:string login:string senha:string limite_ce:integer
+
+Cartao
+	Usuario (Ref)
+	Nome
+	Tipo_cartao
+
+rails g model Cartao usuario:references nome:string tipo_cartao:string
+
+Debito
+	Usuario (Ref)
+	Valor_debitado
+	Tipo_de_debito
+	Local
+
+rails g model Debito usuario:references valor_debitado:integer tipo_de_debito:string local:string
+
+Credito
+	Cartao (ref)
+	Valor_creditado
+	Local
+
+rails g model Credito cartao:references valor_creditado:integer local:string
+
+Mensagem
+	Usuario (Ref)
+	Msg
+
+rails g model mensagem usuario:references msg:string
+

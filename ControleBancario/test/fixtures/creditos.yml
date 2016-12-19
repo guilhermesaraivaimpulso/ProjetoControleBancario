@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cartao: one
+  valor_creditado: 1
+  local: MyString
+
+two:
+  cartao: two
+  valor_creditado: 1
+  local: MyString

@@ -1,0 +1,51 @@
+<%= render 'shared/loginbar' %>
+<div style="padding: 7px">
+  <div class="page-header">
+    <h2>Dados do cartão</h2>
+  </div>
+  <div class="row">
+
+    <div class="col-sm-6">
+      <b>Nome: </b><%= @cartao.nome %><br>
+      <b>Tipo: </b><%= @cartao.tipo_cartao %><br>
+      <b>Limite: </b><%= @cartao.limite %><br>
+      <b>Limite atual </b><%= @cartao.limite_atual %><br>
+    </div>
+  </div>
+  <div class="page-header"><h2>Débito</h2>
+
+  <%= link_to new_credito_path(cartao_id: @cartao.id) do %>
+    <button type="button" class="btn btn-primary">Novo Registro</button>
+  <% end %>
+  </div>
+    <% if @cartao.creditos.count !=0 %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Local</th>
+            <th>Quantidade</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @cartao.creditos.each do |credito| %>
+          <tr>
+            <td><%= credito.local %></td>
+            <td><%= credito.valor_creditado %></td>
+          </tr>
+        <% end %>
+          <tr style="background-color: #EEEEEE">
+            <td colspan="1">Total</td>
+            <td><%= @cartao.limite_atual %></td>
+          </tr> 
+        </tbody>
+      </table>
+    <% else %>
+      <div style="color: #AAAAAA">Cartão ainda não utilizado.</div>
+    <% end %>
+    <br>
+    <%= link_to usuario_path do %>
+      <input type="button" class="btn btn-default" value="Voltar">
+    <% end %>
+  <br>
+  <br>
+</div>

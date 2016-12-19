@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  usuario: one
+  valor_debitado: 1
+  tipo_de_debito: MyString
+  local: MyString
+
+two:
+  usuario: two
+  valor_debitado: 1
+  tipo_de_debito: MyString
+  local: MyString

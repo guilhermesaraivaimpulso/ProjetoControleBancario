@@ -1,0 +1,15 @@
+<div class="page-header"><h2>Novo Registro</h2></div>
+  <%= bootstrap_form_for(@debito) do |f| %>
+  <%= f.text_field :local %>
+  <%= f.number_field :valor_debitado, step: :any %>
+  <%= f.hidden_field :usuario_id, value: session[:usuario_id] %>
+  <%= f.form_group :tipo_de_debito, label: { text: "Tipo: " } do %>
+    <%= f.radio_button :tipo_de_debito, "Retirada", label: "Retirada", inline: true %>
+    <%= f.radio_button :tipo_de_debito, "Entrada", label: "Entrada", inline: true %>
+  <% end %>
+  <%= f.submit %>
+<% end %>
+<br>
+<%= link_to @usuario do %>
+  <input type="button" class="btn btn-default" value="Voltar">
+<% end %>
